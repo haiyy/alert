@@ -8,41 +8,32 @@
 <body>
     <script src="js/main.js"></script>
     <button class='btn'>默认弹窗</button>
-    <button class='btn-showhide'>显示或隐藏</button>
-<!--     <button class='btn-drag'>可拖拽弹窗</button>
-<button class='btn-disappear'>自动消失弹窗</button> -->
+    <button class='btn-drag'>可拖拽弹窗</button>
+   <button class='btn-disappear'>自动消失弹窗</button>
     <script>
         var btn=document.getElementsByClassName('btn')[0];
-        var showhide=document.getElementsByClassName('btn-showhide')[0];
         var drag=document.getElementsByClassName('btn-drag')[0];
         var disappear=document.getElementsByClassName('btn-disappear')[0];
-        //var mark=document.getElementsByClassName('mark')[0];
         btn.onclick=function(){
             new Alert({
                title:'标题1',
                btnbox:['确定','取消']
             })
         };
-        var light=false;
-        showhide.onclick=function(){
-           showhide.style.position='absolute';
-           showhide.style.zIndex=5;
-            if(!light){
-               new Alert({
+        drag.onclick=function(){
+            new Alert({
                title:'标题1',
-               btnbox:['确定','取消']
+               btnbox:['确定','取消'],
+               drag:true
             })
-            light=true;
-            }else{
-              var mark=document.getElementsByClassName('mark')[0];
-              if(mark){
-                document.body.removeChild(mark);
-              }else{
-                light=false;
-              }
-              light=false;
-            }
-            console.log(light)
+        };
+        disappear.onclick=function(){
+            new Alert({
+               title:'标题1',
+               btnbox:['确定','取消'],
+               light:true,
+               times:2000
+            })
         };
     </script>
 </body>
